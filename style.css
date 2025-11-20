@@ -62,11 +62,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;about.png
+  color: white;
   font-size: 3rem;
   font-weight: bold;
   text-shadow: 2px 2px 5px black;
-  margin-bottom: 30px;
+  margin-bottom:30px;
 }
 
 /* BANNER FOR ABOUT PAGE */
@@ -76,7 +76,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;about.png
+  color: white;
   font-size: 3rem;
   font-weight: bold;
   text-shadow: 2px 2px 5px black;
