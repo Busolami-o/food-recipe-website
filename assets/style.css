@@ -57,7 +57,7 @@
 
 /* BANNER FOR HOME PAGE */
 .home-banner {
-  background: url('homebanner.png') center/cover no-repeat;
+  background: url('../images/homebanner.png') center/cover no-repeat;
   height: 650px;
   display: flex;
   justify-content: center;
@@ -71,7 +71,7 @@
 
 /* BANNER FOR ABOUT PAGE */
 .about-banner {
-  background: url('about.png') center/cover no-repeat;
+  background: url('../images/about.png') center/cover no-repeat;
   height: 650px;
   display: flex;
   justify-content: center;
