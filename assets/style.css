@@ -43,7 +43,7 @@
   
   /* BANNER FOR ALL RECIPES PAGE */
 .recipes-banner {
-    background: url('Banner2\ 2.jpg') center/cover no-repeat;
+    background: url('../images/Banner2\ 2.jpg') center/cover no-repeat;
     height: 300px;
     display: flex;
     justify-content: center;
