@@ -1,60 +1,96 @@
-// Database-like structure for recipes
-const recipeData = {
-    jollof: {
-      title: "Jollof Rice",
-      image: "images/jollof.jpg",
-      ingredients: [
-        "4 cups Rice",
-        "Tomatoes & pepper mix",
-        "Onions",
-        "Seasoning cubes",
-        "Vegetable oil",
-        "Salt"
-      ],
-      steps: [
-        "Blend tomatoes and pepper.",
-        "Fry mixture in oil with onions.",
-        "Add stock, salt and seasoning.",
-        "Add rice and cook until soft."
-      ]
-    },
-  
-    ofadastew: {
-      title: "Fluffy Pancakes",
-      image: "images/pancakes.jpg",
-      ingredients: [
-        "2 cups Flour",
-        "1 cup Milk",
-        "2 Eggs",
-        "3 tbsp Sugar",
-        "Butter",
-        "Salt"
-      ],
-      steps: [
-        "Mix flour, sugar and salt.",
-        "Add eggs and milk, stir until smooth.",
-        "Heat pan, add butter.",
-        "Pour batter and cook both sides."
-      ]
-    },
-  
-    puffpuff: {
-      title: "Puff Puff",
-      image: "puff.jpg",
-      ingredients: [
-        "Spaghetti pasta",
-        "Minced meat",
-        "Tomato sauce",
-        "Onions & garlic",
-        "Seasoning cubes",
-        "Salt"
-      ],
-      steps: [
-        "Boil spaghetti with salt.",
-        "Fry minced meat with onions and garlic.",
-        "Add tomato sauce and seasoning.",
-        "Mix with spaghetti and serve."
-      ]
-    }
-  };
-  
+// Get recipe ID from URL parameters
+function getRecipeIdFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id');
+}
+
+// Display recipe on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const recipeId = getRecipeIdFromUrl();
+
+  if (!recipeId) {
+    console.error('No recipe ID provided');
+    displayError('Recipe not found');
+    return;
+  }
+
+  const recipe = getRecipeById(recipeId);
+
+  if (!recipe) {
+    displayError('Recipe not found');
+    return;
+  }
+
+  displayRecipe(recipe);
+});
+
+// Display recipe details on the page
+function displayRecipe(recipe) {
+  // Set page title
+  document.title = recipe.title + ' - RecipesforYou';
+
+  // Get recipe container
+  const recipeContainer = document.getElementById('recipe-container');
+
+  if (!recipeContainer) {
+    console.error('Recipe container not found');
+    return;
+  }
+
+  // Build recipe HTML
+  const recipeHTML = `
+    <section id="${recipe.id}" class="recipe-details">
+      <img src="${recipe.image}" alt="${recipe.title}">
+
+      <h1>${recipe.title}</h1>
+      <p>${recipe.description}</p>
+
+      <div class="ingredients">
+        <h2>Ingredients</h2>
+        <ul>
+          ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+        </ul>
+      </div>
+
+      <div class="steps">
+        <h2>How To Prepare</h2>
+        <ol>
+          ${recipe.steps.map(step => `<li>${step}</li>`).join('')}
+        </ol>
+      </div>
+    </section>
+  `;
+
+  recipeContainer.innerHTML = recipeHTML;
+}
+
+// Display error message
+function displayError(message) {
+  const recipeContainer = document.getElementById('recipe-container');
+
+  if (recipeContainer) {
+    recipeContainer.innerHTML = `
+      <div class="error-message">
+        <h2>${message}</h2>
+        <p><a href="recipes.html">Back to Recipes</a></p>
+      </div>
+    `;
+  }
+}
+
+// Add click handlers to recipe cards to navigate to recipe page
+document.addEventListener('DOMContentLoaded', function() {
+  const recipeCards = document.querySelectorAll('.recipe-card[data-id]');
+
+  recipeCards.forEach(card => {
+    card.addEventListener('click', function(e) {
+      const recipeId = this.getAttribute('data-id');
+
+      // Only navigate if it's not already pointing to a specific recipe page
+      if (!this.href.includes('?id=')) {
+        e.preventDefault();
+        window.location.href = `recipeInfo.html?id=${recipeId}`;
+      }
+    });
+  });
+});
