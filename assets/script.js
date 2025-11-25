@@ -39,11 +39,13 @@ function displayRecipe(recipe) {
 
   // Build recipe HTML
   const recipeHTML = `
-    <section id="${recipe.id}" class="recipe-details">
-      <img src="${recipe.image}" alt="${recipe.title}">
-
-      <h1>${recipe.title}</h1>
-      <p>${recipe.description}</p>
+  <section id="${recipe.id}" class="recipe-details">
+    <div class="recipe-header">
+      <div class="recipe-left">
+        <img src="${recipe.image}" alt="${recipe.title}">
+        <h1>${recipe.title}</h1>
+        <p>${recipe.description}</p>
+      </div>
 
       <div class="ingredients">
         <h2>Ingredients</h2>
@@ -51,16 +53,16 @@ function displayRecipe(recipe) {
           ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
         </ul>
       </div>
+    </div>
 
-      <div class="steps">
-        <h2>How To Prepare</h2>
-        <ol>
-          ${recipe.steps.map(step => `<li>${step}</li>`).join('')}
-        </ol>
-      </div>
-    </section>
-  `;
-
+    <div class="steps">
+      <h2>How To Prepare</h2>
+      <ol>
+        ${recipe.steps.map(step => `<li>${step}</li>`).join('')}
+      </ol>
+    </div>
+  </section>
+`;
   recipeContainer.innerHTML = recipeHTML;
 }
 
@@ -94,3 +96,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
