@@ -1,46 +1,5 @@
 /* ===== GLOBAL STYLES ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  body {
-    background: #2c2828;
-    color: #ffffff;
-  }
-  
-  /* ===== NAVBAR ===== */
-  nav {
-    background: #ba340b;
-    padding: 30px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #fff;
-  }
-  
-  nav h2 {
-    font-weight: bold;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  nav ul li a:hover {
-    text-decoration: underline;
-  }
-  
+
   /* BANNER FOR ALL RECIPES PAGE */
 .recipes-banner {
     background: url('../images/Banner2\ 2.jpg') center/cover no-repeat;
@@ -71,16 +30,61 @@
 
 /* BANNER FOR ABOUT PAGE */
 .about-banner {
-  background: url('../images/about.png') center/cover no-repeat;
-  height: 650px;
-}
-.about{
+  background-image: url(../images/about.png);
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   margin-bottom: 30px;
+  padding-top: 300px;
 }
-  
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 30px;
+  background-color: #e0e0e0;
+  padding: 40px;
+  padding-top: 50px;
+  margin-top: 450px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.aboutus {
+  flex: 1;
+  background-color: white;
+  padding: 30px;
+  border-left: 5px solid #ba340b;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  color: #333;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.mission {
+  flex: 1;
+  background-color: #ba340b;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  color: white;
+  line-height: 1.8;
+  font-size: 1.2rem;
+}
+
+.mission h3 {
+  margin-bottom: 15px;
+  color: #e0e0e0;
+}
+
   /* ===== RECIPE GRID ===== */
   .recipe-container {
     padding: 40px;
@@ -129,14 +133,6 @@
     margin-left: 20px;
   }
   
-  /* ===== FOOTER ===== */
-  footer {
-    background: #ba340b;
-    padding: 20px;
-    text-align: center;
-    margin-top: 40px;
-    color: white;
-  }
   /* Recipe Details Page Styles */
 
 * {
@@ -148,7 +144,7 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: #333;
+  /* color: #333; */
   background-color: #e8e8e8;
 }
 
@@ -160,12 +156,14 @@ nav {
   justify-content: space-between;
   align-items: center;
   color: #fff;
+  position: relative;
 }
 
 nav h2 {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin: 0;
 }
 
 nav ul {
@@ -173,23 +171,134 @@ nav ul {
   display: flex;
   gap: 15px;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  border: 2px solid rgba(255,255,255,0.3); /* Subtle border */
+  border: 2px solid rgba(255,255,255,0.3);
   padding: 8px 24px;
   transition: all 0.3s ease;
+  display: block;
 }
 
-/* The Invert Effect */
 nav ul li a:hover {
   background: white;
-  color: #ba340b; /* Text turns red */
+  color: #ba340b;
   border-color: white;
-   text-decoration: none;
+  text-decoration: none;
+}
+
+/* Hamburger Menu Button - Hidden on desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+  nav {
+    padding: 15px 20px;
+  }
+
+  nav h2 {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+
+  /* Show hamburger button on mobile */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Animate hamburger to X when open */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* Hide menu by default on mobile */
+  nav ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ba340b;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  }
+
+  /* Show menu when active */
+  nav ul.active {
+    max-height: 300px;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  nav ul li:last-child {
+    border-bottom: none;
+  }
+
+  nav ul li a {
+    padding: 15px 20px;
+    border: none;
+    border-left: 4px solid transparent;
+    border-radius: 0;
+    width: 100%;
+  }
+
+  nav ul li a:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border-left-color: white;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 12px 15px;
+  }
+
+  nav h2 {
+    font-size: 1.1rem;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+  }
 }
 
 /* Recipe Container */
@@ -368,12 +477,38 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  nav h2 {
-    font-size: 1.5rem;
+  
+.home-banner {
+    background-size: contain;
+    background-position: center center;
+    height: 400px;
+    font-size: 2rem;
+    margin-bottom:0px;
+  }
+   .recipes-banner {
+    background-size: contain;
+    background-position: center center;
+    height: 200px;
+    font-size: 2rem;
+  }
+  .about-banner {
+    height: 200px;
+    padding-top: 150px;
+    font-size: 1.8rem;
   }
 
-  nav ul {
-    gap: 1rem;
+  .about {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    padding-top: 30px;
+    margin-top: 300px;
+  }
+
+  .aboutus,
+  .mission {
+    flex: 1;
+    width: 100%;
   }
 
   .recipe-details h1 {
@@ -405,9 +540,40 @@ footer {
 }
 
 @media (max-width: 480px) {
-  nav ul {
+  .home-banner {
+    background-size: contain;
+    background-position: center center;
+    height: 300px;
+    font-size: 1.5rem;
+    
+  }
+  .recipes-banner {
+    background-size: contain;
+    background-position: center center;
+    height: 150px;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 8px black;
+  }
+  .about-banner {
+    padding-top: 80px;
+  }
+
+  .about {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 15px;
+    padding: 15px;
+    padding-top: 20px;
+    margin-top: 500px;
+  }
+
+  .aboutus,
+  .mission {
+    padding: 20px;
+    font-size: 0.95rem;
+  }
+
+  .mission h3 {
+    font-size: 1.1rem;
   }
 
   .recipe-details h1 {

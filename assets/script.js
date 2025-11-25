@@ -97,3 +97,19 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  menuToggle.addEventListener('click', function() {
+    this.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+
+  // Close menu when clicking a link
+  const navLinks = navMenu.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+    });
+  });

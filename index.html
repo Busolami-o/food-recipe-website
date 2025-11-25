@@ -4,15 +4,22 @@
   <meta charset="UTF-8">
   <title>Food Recipe Website</title>
   <link rel="stylesheet" href="assets/style.css">
-  <script src="assets/recipeinfo.js"></script>
-  <script src="assets/script.js"></script>
+  
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav>
   <h2>RecipesforYou</h2>
-  <ul>
+  
+  <!-- Hamburger Menu Button (add this) -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  
+  <ul id="navMenu">
     <li><a href="index.html">Home</a></li>
     <li><a href="recipes.html">Recipes</a></li>
     <li><a href="about.html">About</a></li>
@@ -55,6 +62,7 @@
 <footer>
   © 2025 RecipesforYou • All Rights Reserved
 </footer>
-
+  <script src="assets/recipeinfo.js"></script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
